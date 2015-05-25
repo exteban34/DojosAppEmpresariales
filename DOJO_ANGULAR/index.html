@@ -1,0 +1,47 @@
+
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Angular Demo</title>
+  <script src="angular/lib/angular/angular.min.js"></script>
+  <script src="angular/js/controllers.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <script src="angular/lib/angular/angular-route.min.js"></script>
+</head>
+<body>
+
+<div class="main" ng-controller = "MyController"> 
+  <div class="search">
+    <h1>Directotio de Artistas</h1>
+    <label>Buscar: </label>
+    <input ng-model="query" placeholder="Search for artists"  autofocus>
+    <label class="formgroup">por:
+    <select ng-model="artistOrder">
+      <option value="name">Nombre</option>
+      <option value="reknown">Reconocimiento</option>
+    </select>
+    </label>
+
+      <label class="formgroup">Ascending
+        <input type="radio" ng-model="direction" name="direction" checked>
+      </label> 
+      <label class="formgroup">Descendig
+        <input type="radio" ng-model="direction" value="reverse" >
+      </label>
+<!--     hasta aqui el codigo de collabedit       -->
+</div>
+    <ul class="artistlist">
+    <li class="artist cf" ng-repeat="item in artists | filter: query | orderBy: artirstOrder:direction">
+    <img ng-src="images/{{item.shortname}}_tn.jpg" alt="Photo of {{item.name}}">
+    <div class="info">
+        <h2>{{item.name}}</h2>
+        <h3>{{item.reknown}}</h3>
+    </div>
+    </li>
+    </ul>
+
+</div>
+
+</body>
+</html>
